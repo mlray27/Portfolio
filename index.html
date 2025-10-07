@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marie Lou Panthagani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+  <style>
+    :root{
+      --bg: #f9f9f9;
+      --panel: #ffffff;
+      --ink: #031730;         /* dark readable text */
+      --subtle: #4f5964;      /* muted secondary text */
+      --brand: #02192d;       /* accent blue */
+      --muted: #e7f3fa;       /* pastel blue for buttons/nav boxes */
+      --chip: rgba(28,117,188,0.1);
+      --ring: rgba(28,117,188,0.25);
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+
+    body {
+      background: radial-gradient(1200px 600px at 10% -10%, rgb(188,215,241), transparent),
+                  radial-gradient(1000px 500px at 110% 10%, #c5ecf4, transparent),
+                  var(--bg);
+      color: var(--ink);
+      font: 400 18px/1.8 "Inter", system-ui, sans-serif;
+    }
+
+    /* Shell */
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 60px 80px;
+    }
+
+    /* Header */
+    header.nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .logo b {
+      font-family: "Playfair Display", serif;
+      color: var(--brand);
+      font-size: 50px;
+    }
+    .links a {
+      margin-left: 18px;
+      color: var(--ink);
+      font-weight: 600;
+      background: var(--muted);
+      padding: 8px 14px;
+      border-radius: 10px;
+      transition: all .2s;
+    }
+    .links a:hover {
+      background: var(--brand);
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .portrait img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      object-fit: cover;
+    }
+    .intro {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      background: var(--muted);
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    h1 {
+      font: 800 46px/1.2 "Playfair Display", serif;
+      color: var(--ink);
+      margin: 10px 0 20px;
+    }
+    .intro p {
+      color: var(--ink);
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .quick a {
+      background: var(--muted);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .quick a:hover {
+      background: var(--brand);
+      color: white;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 60px;
+    }
+    .section-title {
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 20px;
+      border-bottom: 3px solid var(--brand);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    /* Experience Cards */
+    .xp {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .xp h3 {
+      color: var(--ink);
+      font-size: 20px;
+    }
+    .xp p {
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 30px;
+    }
+    h3 {
+      color: var(--ink);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      background: var(--muted);
+      border: 1px solid var(--ring);
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    /* Bars */
+    .bars .bar {
+      margin: 14px 0;
+    }
+    .bars .label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .track {
+      height: 12px;
+      background: #d8e7f7;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), #68b2f8);
+    }
+
+    /* Projects */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .project {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr; /* smaller image */
+      gap: 20px;
+      align-items: center;
+      background: #ffffff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .project img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    /* Research, Extras, Contact */
+    .research, .card {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding: 30px;
+      background: var(--muted);
+      color: var(--ink);
+      text-align: center;
+      border-top: 1px solid #ccc;
+    }
+    .btn {
+      background: var(--brand);
+      color: white;
+      border-radius: 12px;
+      padding: 10px 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns: 1fr;}
+      .portrait{max-height: 420px}
+      .skills{grid-template-columns:1fr}
+      .project, .research{grid-template-columns:1fr}
+    }
+    /* Adjust company logo sizing for Experience section */
+    .xp-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--muted);
+      border-radius: 10px;
+      padding: 6px;              /* ↓ smaller padding */
+      width: 52px;               /* ↓ slightly narrower container */
+      height: 52px;
+    }
+
+    .xp-logo img {
+      width: 42px;               /* ↓ smaller actual logo */
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    /* === PROJECT BADGES (Skill Tags) === */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      background: var(--muted);
+      border: 1px solid var(--ring);
+      color: var(--ink);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.03em;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .badge:hover {
+      background: var(--brand);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* === Hover effect for Skill Chips === */
+    .chip {
+      background: var(--muted);
+      border: 1px solid var(--ring);
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.25s ease-in-out;
+    }
+
+    .chip:hover {
+      background: var(--brand);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(28,117,188,0.25);
+    }
+
+    /* === Academic Research Section Fix === */
+    .research {
+      display: grid;
+      grid-template-columns: 1fr; /* single column for now */
+      gap: 20px;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      align-items: start;
+    }
+
+    .research img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .research h3 {
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .research p {
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Top bar -->
+    <header class="nav">
+      <div class="logo"><b>Marie&nbsp;Lou&nbsp;Panthagani</b></div>
+      <nav class="links" aria-label="Social">
+        <a href="Marielou-resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/marie-lou-panthagani" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/mlray27" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <figure class="portrait">
+        <img id="potrait-img" src="images/potrait1.jpg" alt="Marie Lou portrait" />
+      </figure>
+      <div class="intro">
+        <span class="tag"><i class="fas fa-sparkles"></i> Hello!</span>
+        <h1>I'm Marie Lou.</h1>
+        <p>
+          I’m pursuing my <b>Master’s in Computer Science</b> at <b>New York University, Courant Institute of Mathematical Sciences</b>,  
+          graduating in <b>December 2025</b>. My experience spans building <b>machine learning models</b>, developing <b>data engineering pipelines</b>,  
+          and deploying <b>cloud-based solutions</b> that make data accessible and actionable.
+        </p>
+        <p style="color:#04203d; font-size:16px;">
+          I enjoy working on projects that bridge research and real-world application, from predictive analytics to scalable software systems.
+        </p>
+        <div class="quick">
+          <a href="#skills">Skills</a>
+          <a href="#experience">Work</a>
+          <a href="#projects">Projects</a>
+          <a href="#research">Research</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (before projects) -->
+    <section id="experience">
+      <div class="section-title">Work Experience</div>
+      <div class="timeline">
+
+        <article class="xp">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="xp-logo">
+            <img src="images/logos/exposys.jpeg" alt="Exposys Data Labs logo" />
+          </div>
+          <div>
+            <h3>Data Engineer • Exposys Data Labs • <small>May 2023 – Dec 2023</small></h3>
+            <p>
+              I worked as a Data Engineer at Exposys Data Labs, where I designed and optimized ETL pipelines that handled
+              over <b>50,000 records each day</b> to keep business dashboards up to date. I spent a lot of time tuning SQL queries,
+              improving data validation, and restructuring workflows, which ultimately cut dashboard refresh times by <b>30%</b>.
+              I also helped productionize a recommendation model that delivered engagement insights in real time, supporting
+              product teams with more data-driven decisions. My day-to-day involved Python, Airflow, PostgreSQL, and Power BI.
+            </p>
+          </div>
+        </article>
+
+        <article class="xp">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="xp-logo">
+            <img src="images/logos/exposys.jpeg" alt="Exposys Data Labs logo" />
+          </div>
+          <div>
+            <h3>Data Science Intern • Exposys Data Labs • <small>May 2022 – Aug 2022</small></h3>
+            <p>
+              During my internship at Exposys, I got hands-on with data analysis and model building. I created interactive
+              Power BI dashboards to visualize sales and engagement trends, helping teams allocate resources more effectively.
+              I also developed churn prediction models using <b>Logistic Regression</b> and <b>Random Forest</b>, processing
+              more than <b>100,000 customer records</b> with Python and SQL. The best part was presenting these insights
+              in weekly reviews and seeing them influence retention strategies across the business.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">Skills</div>
+      <div class="skills">
+
+        <!-- LEFT COLUMN -->
+        <div>
+          <h3>Stacks I reach for</h3>
+          <div class="chips" aria-label="Skill chips">
+            <!-- Languages -->
+            <span class="chip">Python</span>
+            <span class="chip">C++</span>
+            <span class="chip">Java</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Rust</span>
+            <span class="chip">Go (Golang)</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Bash</span>
+
+            <!-- ML & AI -->
+            <span class="chip">PyTorch</span>
+            <span class="chip">TensorFlow</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">LangChain</span>
+            <span class="chip">Hugging Face</span>
+            <span class="chip">OpenCV</span>
+            <span class="chip">AWS SageMaker</span>
+            <span class="chip">Gen AI / LLMs</span>
+
+            <!-- Data Engineering -->
+            <span class="chip">Apache Spark</span>
+            <span class="chip">Hadoop</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">Airflow</span>
+            <span class="chip">Fivetran</span>
+            <span class="chip">Stitch Data</span>
+            <span class="chip">Databricks</span>
+            <span class="chip">CI/CD</span>
+
+            <!-- Cloud & DevOps -->
+            <span class="chip">AWS</span>
+            <span class="chip">GCP</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">Kubeflow</span>
+            <span class="chip">Git</span>
+            <span class="chip">Linux</span>
+
+            <!-- Databases -->
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">DynamoDB</span>
+            <span class="chip">BigQuery</span>
+            <span class="chip">Redis</span>
+
+            <!-- Visualization -->
+            <span class="chip">Power BI</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Grafana</span>
+
+            <!-- Software Development -->
+            <span class="chip">Node.js</span>
+            <span class="chip">React.js</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Flask</span>
+            <span class="chip">Express</span>
+            <span class="chip">Spring</span>
+            <span class="chip">Taipy</span>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="bars">
+          <h3>Superpowers (approx.)</h3>
+
+          <div class="bar">
+            <div class="label"><span>Machine Learning & Deep Learning</span><span>Expert</span></div>
+            <div class="track"><div class="fill" style="width:92%"></div></div>
+          </div>
+
+          <div class="bar">
+            <div class="label"><span>Data Engineering & Pipeline Automation</span><span>Advanced</span></div>
+            <div class="track"><div class="fill" style="width:90%"></div></div>
+          </div>
+
+          <div class="bar">
+            <div class="label"><span>Cloud & MLOps (AWS / GCP / Docker / Kubeflow)</span><span>Advanced</span></div>
+            <div class="track"><div class="fill" style="width:88%"></div></div>
+          </div>
+
+          <div class="bar">
+            <div class="label"><span>Data Visualization & Analytics</span><span>Proficient</span></div>
+            <div class="track"><div class="fill" style="width:84%"></div></div>
+          </div>
+
+          <div class="bar">
+            <div class="label"><span>Full-Stack & API Development</span><span>Proficient</span></div>
+            <div class="track"><div class="fill" style="width:82%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">Projects</div>
+      <div class="projects">
+        <!-- Pico LLM -->
+        <article class="project">
+          <div class="shot">
+            <a href="https://github.com/mlray27/ML-pico-llm/blob/main/script.py" target="_blank" rel="noopener">
+              <img src="images/llm.jpg" alt="Pico-LLM screenshot" />
+            </a>
+          </div>
+          <div>
+            <h3>Pico‑LLM - Lightweight Transformer</h3>
+            <p>Compact transformer with KV caching + lightweight attention. Explores how to shrink LLMs while keeping quality on limited compute.</p>
+            <div class="badges">
+              <span class="badge">PyTorch</span>
+              <span class="badge">KV Cache</span>
+              <span class="badge">Attention</span>
+            </div>
+          </div>
+        </article>
+        <!-- Vision Mamba -->
+        <article class="project">
+          <div class="shot">
+            <a href="https://github.com/rdaggs/vim_ssm_cv24" target="_blank" rel="noopener">
+              <img src="images/vision-mamba.png" alt="Improved Vision Mamba" />
+            </a>
+          </div>
+          <div>
+            <h3>Improved Vision Mamba</h3>
+            <p>Enhanced a state‑space model with pruning, MobileNet layers, and attention tweaks for ~8% CIFAR‑100 gain and better efficiency.</p>
+            <div class="badges">
+              <span class="badge">SSM</span>
+              <span class="badge">CIFAR‑100</span>
+              <span class="badge">Model pruning</span>
+            </div>
+          </div>
+        </article>
+        <!-- Cloud Adversarial Defense -->
+        <article class="project">
+          <div class="shot">
+            <a href="https://github.com/mlray27/Evaluating-Adversarial-Attacks-and-Defense-Overheads-A-Kubeflow-Based-Computational-Analysis" target="_blank" rel="noopener">
+              <img src="images/kubeflow.png" alt="Cloud adversarial defense" />
+            </a>
+          </div>
+          <div>
+            <h3>Cloud Adversarial Defense (Kubeflow + GCP)</h3>
+            <p>Adversarial training + real‑time monitoring. Improved robustness vs. PGD by 76% while cutting training cycles by 40%.</p>
+            <div class="badges">
+              <span class="badge">Kubeflow</span>
+              <span class="badge">GCP</span>
+              <span class="badge">Security</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <div class="section-title">Academic Research</div>
+      <div class="research">
+        <div class="shot">
+          <!-- no link: placeholder image you can replace -->
+          <img src="images/research.jpg" alt="Research illustration" />
+        </div>
+        <div>
+          <h3>Multimodal ML for Precision Medicine</h3>
+          <p>At NYU, I build multi‑modal models predicting patient responses to combination drug therapies to support personalized treatment decisions.</p>
+          <p>Also exploring transformer optimization, CV architectures, and adversarial defenses with a focus on practical scalability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXTRAS -->
+    <section id="extras">
+      <div class="section-title">Extra‑Curricular</div>
+      <div class="extras">
+        <article class="card">
+          <h3>Event & Media Coordinator • Bapatla Engineering College (2020–2023)</h3>
+          <p>Designed event posters, managed livestreams, and led vendor logistics for large college fests—kept the chaos calm and the crowd engaged.</p>
+        </article>
+        <article class="card">
+          <h3>Community</h3>
+          <p>Mentored juniors on getting started with ML, PyTorch best‑practices, and building a tidy GitHub footprint.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">Contact</div>
+      <div class="card">
+        <p><b>Email:</b> <a href="mailto:marieloup.mlp@gmail.com">marieloup.mlp@gmail.com</a></p>
+        <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/marie-lou-panthagani" target="_blank" rel="noopener">linkedin.com/in/marie-lou-panthagani</a></p>
+        <p><b>GitHub:</b> <a href="https://github.com/mlray27" target="_blank" rel="noopener">github.com/mlray27</a></p>
+        <p><b>Location:</b> New York, NY</p>
+      </div>
+    </section>
+
+    <footer>
+      Built by Marie Lou Panthagani.
+      <div class="cta">
+        <a class="btn" href="#home"><i class="fas fa-arrow-up"></i> Back to top</a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = [
+        "images/potrait1.jpg",
+        "images/portfolio.jpg"
+      ];
+
+      let index = 0;
+      const imgEl = document.getElementById("potrait-img");
+
+      if (!imgEl) {
+        console.error("Portrait image not found!");
+        return;
+      }
+
+      // Smooth fade effect
+      imgEl.style.transition = "opacity 0.8s ease-in-out";
+
+      // Function to cycle through images
+      function changeImage() {
+        imgEl.style.opacity = 0;
+        setTimeout(() => {
+          index = (index + 1) % images.length;
+          imgEl.src = images[index];
+          imgEl.onload = () => {
+            imgEl.style.opacity = 1;
+          };
+        }, 500);
+      }
+
+      // Change image every 10 seconds (10000 ms)
+      setInterval(changeImage, 10000);
+    });
+    </script>
+</body>
+</html>
